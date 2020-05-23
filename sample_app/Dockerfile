@@ -13,3 +13,9 @@ ENV TERM xterm
 RUN apt-get install -y vim less
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
+
+RUN mkdir /var/www
+WORKDIR /var/www
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+CMD ["uwsgi","--ini","/var/www/uwsgi.ini"]
