@@ -8,3 +8,10 @@ services:
     tty: true
     volumes:
       - ./sample:/root/sample
+  web:
+    image: nginx:alpine
+    ports:
+      - 8888:80
+    privileged: true
+    volumes:
+      - "./:/usr/share/nginx/html"
